@@ -1,7 +1,8 @@
 ## TODO
 
+- [ ] Add the database and database configurations
 - [ ] Add Article section.
-- [ ] Add a dropdown in writing page.
+- [x] Add a dropdown in writing page.
 - [ ] Add a Contact section.
 - [ ] Uploading photo in Blogs should be optional.
 - [ ] Home page slider with best articles, blogs, and poems.
@@ -11,6 +12,3 @@
 - [ ] The accounts can be deleted. and also after 30 days can be recovered.
 
 **NOTE:** Articles/Blogs section should be the main priority
-
-
-
