@@ -7,8 +7,8 @@ export type PostData = {
 export type UserData = {
   firstName: string,
   lastName: string,
-  email: String,
-  password: String
+  email: string,
+  password: string
 }
 
 export type RepositoryResponse = {

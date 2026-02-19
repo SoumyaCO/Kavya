@@ -1,16 +1,18 @@
 import { pgclient } from "@/lib/db";
-import { UserData, RepositoryResponse } from "@/types/types";
+import { RepositoryResponse } from "@/types/types";
 
 
-export async function createUserRepository(data: UserData): Promise<RepositoryResponse> {
+export async function createUserRepository(data: { email: string, password: string }): Promise<RepositoryResponse> {
   try {
     let result = await pgclient
-      .query('INSERT INTO USERS (first_name, last_name, email, password) VALUES($1, $2, $3, $4)',
-        [data.firstName, data.lastName, data.email, data.password]
+      .query('INSERT INTO USERS (email, password) VALUES($1, $2)',
+        [data.email, data.password]
       )
-    return { success: true,  res: {data: {}, error:""}
-  }catch(error) {
-    return { success: true,  res: {data:{}, error: error }
+    return { success: true, res: { data: result, error: "" } }
+  } catch (error) {
+    return {
+      success: true, res: { data: {}, error: error }
+    }
   }
 }
 

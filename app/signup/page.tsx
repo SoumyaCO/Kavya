@@ -2,9 +2,21 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { testDBConnection } from "./actions"
+import { useState } from "react";
+import { credentialLogin } from "./actions";
 
 export default function SignupPage() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  async function submitForm() {
+    await credentialLogin({
+      firstName, lastName, email, password
+    })
+  }
+
   return (
     <div className="w-full h-screen grid grid-cols-1 md:grid-cols-2">
       {/* Left Decoration - Matching Login Page */}
@@ -28,24 +40,24 @@ export default function SignupPage() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium leading-none">First name</label>
-                <Input placeholder="John" />
+                <Input placeholder="John" onChange={(e) => setFirstName(e.target.value)} />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium leading-none">Last name</label>
-                <Input placeholder="Doe" />
+                <Input placeholder="Doe" onChange={(e) => setLastName(e.target.value)} />
               </div>
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium leading-none">Email</label>
-              <Input placeholder="name@example.com" type="email" />
+              <Input placeholder="name@example.com" type="email" onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium leading-none">Password</label>
-              <Input type="password" />
+              <Input type="password" onChange={(e) => setPassword(e.target.value)} />
             </div>
 
             <Button
-              onClick={() => testDBConnection()}
+              onClick={submitForm}
               className="w-full bg-primary hover:bg-primary/90">Sign Up</Button>
 
             {/* Social Login Buttons - Added */}
