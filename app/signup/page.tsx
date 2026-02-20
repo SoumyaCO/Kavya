@@ -1,19 +1,22 @@
 'use client'
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { useState } from "react";
-import { credentialLogin } from "./actions";
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { useState } from 'react'
+import { credentialSignUp } from './actions'
 
 export default function SignupPage() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   async function submitForm() {
-    await credentialLogin({
-      firstName, lastName, email, password
+    await credentialSignUp({
+      firstName,
+      lastName,
+      email,
+      password,
     })
   }
 
@@ -24,7 +27,9 @@ export default function SignupPage() {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-10" />
         <div className="relative z-10 text-center space-y-6">
           <h1 className="text-5xl font-bold font-heading">Join Kavya</h1>
-          <p className="text-xl max-w-sm">Start your journey into the world of words today.</p>
+          <p className="text-xl max-w-sm">
+            Start your journey into the world of words today.
+          </p>
         </div>
       </div>
 
@@ -32,33 +37,59 @@ export default function SignupPage() {
       <div className="flex flex-col justify-center items-center p-8 bg-background">
         <div className="w-full max-w-sm space-y-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight">Create an account</h2>
-            <p className="text-muted-foreground mt-2">Enter your details to get started</p>
+            <h2 className="text-3xl font-bold tracking-tight">
+              Create an account
+            </h2>
+            <p className="text-muted-foreground mt-2">
+              Enter your details to get started
+            </p>
           </div>
 
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium leading-none">First name</label>
-                <Input placeholder="John" onChange={(e) => setFirstName(e.target.value)} />
+                <label className="text-sm font-medium leading-none">
+                  First name
+                </label>
+                <Input
+                  placeholder="John"
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium leading-none">Last name</label>
-                <Input placeholder="Doe" onChange={(e) => setLastName(e.target.value)} />
+                <label className="text-sm font-medium leading-none">
+                  Last name
+                </label>
+                <Input
+                  placeholder="Doe"
+                  onChange={(e) => setLastName(e.target.value)}
+                />
               </div>
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium leading-none">Email</label>
-              <Input placeholder="name@example.com" type="email" onChange={(e) => setEmail(e.target.value)} />
+              <Input
+                placeholder="name@example.com"
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium leading-none">Password</label>
-              <Input type="password" onChange={(e) => setPassword(e.target.value)} />
+              <label className="text-sm font-medium leading-none">
+                Password
+              </label>
+              <Input
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
 
             <Button
               onClick={submitForm}
-              className="w-full bg-primary hover:bg-primary/90">Sign Up</Button>
+              className="w-full bg-primary hover:bg-primary/90"
+            >
+              Sign Up
+            </Button>
 
             {/* Social Login Buttons - Added */}
             <div className="relative my-4">
@@ -66,7 +97,9 @@ export default function SignupPage() {
                 <span className="w-full border-t" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                <span className="bg-background px-2 text-muted-foreground">
+                  Or continue with
+                </span>
               </div>
             </div>
 
@@ -77,8 +110,13 @@ export default function SignupPage() {
           </div>
 
           <p className="text-center text-sm text-muted-foreground">
-            Already have an account?{" "}
-            <Link href="/login" className="font-semibold text-primary hover:underline">Sign in</Link>
+            Already have an account?{' '}
+            <Link
+              href="/login"
+              className="font-semibold text-primary hover:underline"
+            >
+              Sign in
+            </Link>
           </p>
         </div>
       </div>

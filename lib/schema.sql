@@ -39,9 +39,11 @@ CREATE TABLE sessions
 CREATE TABLE users
 (
   id SERIAL,
+  "firstName" VARCHAR(255),
+  "lastName" VARCHAR(255),
   name VARCHAR(255),
   email VARCHAR(255),
-  password VARCHAR(20),
+  password VARCHAR(255),
   "emailVerified" TIMESTAMPTZ,
   image TEXT,
  

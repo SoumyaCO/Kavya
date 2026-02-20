@@ -2,12 +2,13 @@ import type { Metadata } from 'next'
 import { Inter, Crimson_Text } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
+import { SessionProvider } from 'next-auth/react'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 const crimsonText = Crimson_Text({
   weight: ['400', '600', '700'],
   subsets: ['latin'],
-  variable: '--font-serif'
+  variable: '--font-serif',
 })
 
 export const metadata: Metadata = {
@@ -25,14 +26,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(
-        "min-h-screen bg-background font-sans antialiased flex flex-col",
-        inter.variable,
-        crimsonText.variable
-      )}>
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <body
+        className={cn(
+          'min-h-screen bg-background font-sans antialiased flex flex-col',
+          inter.variable,
+          crimsonText.variable
+        )}
+      >
+        <SessionProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   )
