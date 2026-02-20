@@ -4,6 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { PoemCard } from "@/components/PoemCard"
 import { MOCK_USERS, MOCK_POEMS } from "@/lib/mockData"
+import { DialogDemo } from "../profile-edit-dialog"
 
 export default function ProfilePage({ params }: { params: { username: string } }) {
     const user = MOCK_USERS[0] // Mock user
@@ -30,10 +31,12 @@ export default function ProfilePage({ params }: { params: { username: string } }
                                 <p className="text-muted-foreground">{user.username}</p>
                             </div>
                             <div className="flex gap-2">
-                                <Button variant="outline" size="sm">
-                                    <Edit3 className="mr-2 h-4 w-4" />
-                                    Edit Profile
-                                </Button>
+                                <DialogDemo>
+                                    <Button variant="outline" size="sm">
+                                        <Edit3 className="mr-2 h-4 w-4" />
+                                        Edit Profile
+                                    </Button>
+                                </DialogDemo>
                                 <Button variant="ghost" size="icon">
                                     <Settings className="h-4 w-4" />
                                 </Button>

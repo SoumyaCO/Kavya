@@ -1,6 +1,6 @@
 ## TODO
 
-- [ ] Add the database and database configurations
+- [x] Add the database and database configurations
 - [ ] Add Article section.
 - [x] Add a dropdown in writing page.
 - [ ] Add a Contact section.

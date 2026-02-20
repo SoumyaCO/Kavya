@@ -30,7 +30,7 @@ export function Navbar() {
     { href: '/about', label: 'About' },
   ]
   const { data: session } = useSession()
-  const user = session?.user
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -130,10 +130,10 @@ export function Navbar() {
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    {user?.firstName + ' ' + user?.lastName}
+                    {`${session?.user.firstName} ${session?.user.lastName}`}
                   </p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    user@example.com
+                    {session?.user.email}
                   </p>
                 </div>
               </DropdownMenuLabel>
